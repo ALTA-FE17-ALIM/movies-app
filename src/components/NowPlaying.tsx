@@ -11,24 +11,23 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import Card from "./Card";
-// import { getMoviesNowPlaying } from "@/lib/apis/movie/api";
-// import { Movie } from "@/lib/apis/movie/types";
-import data from "@/lib/dummy-movie/mock-data.json";
+import { getMoviesNowPlaying } from "@/lib/apis/movie/api";
+import { Movie } from "@/lib/apis/movie/types";
 
-// interface IUpcomingMovie {
-//   data: Movie[];
-// }
+interface IUpcomingMovie {
+  data: Movie[];
+}
 export default class NowPlaying extends Component {
-  // state: IUpcomingMovie = {
-  //   data: [],
-  // };
-  // componentDidMount() {
-  //   this.getData();
-  // }
-  // getData = async () => {
-  //   const result = await getMoviesNowPlaying();
-  //   this.setState({ data: result.results });
-  // };
+  state: IUpcomingMovie = {
+    data: [],
+  };
+  componentDidMount() {
+    this.getData();
+  }
+  getData = async () => {
+    const result = await getMoviesNowPlaying();
+    this.setState({ data: result.results });
+  };
 
   render() {
     return (
@@ -47,9 +46,9 @@ export default class NowPlaying extends Component {
           loop={true}
           navigation={true}
           modules={[Navigation]}>
-          {data.map((data) => (
+          {this.state.data.map((data) => (
             <SwiperSlide>
-              <Card key={data.id} id={data.id} image={data.image} title={data.title} />
+              <Card key={data.id} id={data.id} image={data.poster_path} title={data.title} />
             </SwiperSlide>
           ))}
         </Swiper>

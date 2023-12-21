@@ -1,6 +1,6 @@
 import DetailMovie from "@/components/DetailMovie";
 import ListFavorite from "@/components/ListFavorite";
-import App from "@/pages";
+import Index from "@/pages";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 import { Component } from "react";
@@ -11,7 +11,7 @@ export default class router extends Component {
     const router = createBrowserRouter([
       {
         path: "/",
-        element: <App />,
+        element: <Index />,
       },
       {
         path: "/login",

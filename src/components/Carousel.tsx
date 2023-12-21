@@ -3,17 +3,26 @@ import { Badge } from "./ui/badge";
 import Button from "./Button";
 import { Play, Star } from "lucide-react";
 import { Link } from "react-router-dom";
-import { IdummyData } from "@/lib/dummy-movie/type.";
-
-export default class Carousel extends Component<IdummyData> {
+interface IPropsMovies {
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  overview: string;
+  vote_average: number;
+}
+export default class Carousel extends Component<IPropsMovies> {
   render() {
-    const { title, id, image, release_date, overview, rating, duration, genre, director } =
-      this.props;
+    const { title, id, poster_path, release_date, overview, vote_average } = this.props;
 
     return (
       <div className="relative min-w-full flex ">
         <div className="bg-black/50 h-full fixed inset-x-0"></div>
-        <img src={`${image}`} alt="image" className="h-[600px] w-full object-cover " />
+        <img
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt="image"
+          className="h-[600px] w-full object-cover "
+        />
         <div className="absolute container w-full top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 text-white flex z-50">
           <div className="w-1/2 gap-y-5 flex flex-col">
             <div className="bg-buttonColor rounded-xl px-2 w-fit">
@@ -22,12 +31,9 @@ export default class Carousel extends Component<IdummyData> {
             <h1 className="text-[45px] font-bold uppercase ">{title}</h1>
             <div className="flex items-center gap-x-4 text-lg">
               <Badge className="bg-buttonColor text-base gap-x-1 hover:bg-buttonColor2">
-                <Star /> {rating}
+                <Star /> {vote_average.toFixed(1)}
               </Badge>
               <span>IMDB</span>
-              <span className="">{director}</span>
-              <span className="">{genre}</span>
-              <span>{duration}min</span>
               <span>{release_date}</span>
             </div>
             <p className="text-lg ">{overview}</p>

@@ -1,7 +1,6 @@
-// import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Component } from "react";
-// import { getMovieUpComing } from "@/lib/apis/movie/api";
-// import { Movie } from "@/lib/apis/movie/types";
+import { getMovieUpComing } from "@/lib/apis/movie/api";
+import { Movie } from "@/lib/apis/movie/types";
 import Carousel from "./Carousel";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,23 +12,21 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import data from "@/lib/dummy-movie/mock-data.json";
-// interface IUpcomingMovie {
-//   // data: Movie[];
-
-// }
+interface IUpcomingMovie {
+  data: Movie[];
+}
 export default class NewRelease extends Component {
-  // state: IUpcomingMovie = {
-  //   data: [],
-  // };
+  state: IUpcomingMovie = {
+    data: [],
+  };
 
-  // componentDidMount() {
-  //   this.getData();
-  // }
-  // getData = async () => {
-  //   const result = await getMovieUpComing();
-  //   this.setState({ data: result.results });
-  // };
+  componentDidMount() {
+    this.getData();
+  }
+  getData = async () => {
+    const result = await getMovieUpComing();
+    this.setState({ data: result.results });
+  };
   render() {
     return (
       <div className="font-ubuntu">
@@ -47,20 +44,16 @@ export default class NewRelease extends Component {
           }}
           navigation={true}
           modules={[Pagination, Navigation, Autoplay]}>
-          {data.map((data) => (
+          {this.state.data.slice(0, 10).map((data) => (
             <SwiperSlide>
               <Carousel
                 key={data.id}
                 id={data.id}
-                image={data.image}
+                poster_path={data.poster_path}
                 overview={data.overview}
                 title={data.title}
+                vote_average={data.vote_average}
                 release_date={data.release_date}
-                director={data.director}
-                duration={data.duration}
-                genre={data.genre}
-                language={data.language}
-                rating={data.rating}
               />
             </SwiperSlide>
           ))}
