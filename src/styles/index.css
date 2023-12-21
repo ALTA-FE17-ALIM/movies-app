@@ -90,3 +90,34 @@
 .animate-pulsee {
   animation: pulse 2s infinite;
 }
+
+
+
+
+#card-swiper-color .swiper-button-next,
+#card-swiper-color .swiper-button-prev{
+  color: white;
+  background-color: #29b6f6;
+  border-radius: 100%;
+  padding: 18px;
+  transition: all 0.3s ease-in-out;
+  margin: 0px -8px;
+}
+
+#swiper-color .swiper-button-prev,
+#swiper-color .swiper-button-next {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+  padding: 22px;
+  transition: all 0.3s ease-in-out;
+}
+#swiper-color .swiper-button-prev:hover,
+#swiper-color .swiper-button-next:hover {
+  background-color: rgba(255, 255, 255, 0.807);
+  color: rgb(41 182 246 / 0.5);
+}
+
+:root {
+  --swiper-navigation-size: 22px !important;
+}
