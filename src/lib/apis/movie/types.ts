@@ -30,17 +30,14 @@ export interface MovieDetail {
   original_title: string;
   overview: number;
   popularity: string;
-  poster_path: {
-    id: number
-    logo_path: string
-    name: string
-    origin_country: string
-  }[];
+  poster_path: string;
   production_companies: {
     iso_3166_1: string
     name: string
-
   }[];
+  production_countries: {
+    name: string
+  }[]
   release_date: string;
   revenue: number;
   runtime: number;
@@ -53,6 +50,21 @@ export interface MovieDetail {
   tagline: string
   title: string
   video: boolean
+  videos: {
+    results: {
+      iso_639_1: string,
+      iso_3166_1: string,
+      name: string,
+      key: string,
+      site: string,
+      size: number,
+      type: string,
+      official: true,
+      published_at: string,
+      id: string
+
+    }[]
+  }
   vote_average: number
   vote_count: number
 }

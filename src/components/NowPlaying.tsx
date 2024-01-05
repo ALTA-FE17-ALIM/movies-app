@@ -47,7 +47,7 @@ export default class NowPlaying extends Component {
           navigation={true}
           modules={[Navigation]}>
           {this.state.data.map((data) => (
-            <SwiperSlide>
+            <SwiperSlide key={data.id}>
               <Card key={data.id} id={data.id} image={data.poster_path} title={data.title} />
             </SwiperSlide>
           ))}

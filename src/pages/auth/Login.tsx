@@ -1,14 +1,20 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import withRouter from "@/withRouter";
 import { LogIn } from "lucide-react";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Login extends Component {
-  async handleLogin(e: any) {
+interface LoginProps {
+  navigate: any;
+}
+
+class Login extends Component<LoginProps> {
+  handleLogin = async (e: any) => {
     e.preventDefault();
     const body = {
       username: e.target[0].value,
@@ -16,11 +22,13 @@ export default class Login extends Component {
     };
     try {
       alert(JSON.stringify(body));
+      const { navigate } = this.props;
+      navigate("/");
       alert("Login successfuly");
     } catch (error) {
       alert(error);
     }
-  }
+  };
 
   render() {
     return (
@@ -87,3 +95,4 @@ export default class Login extends Component {
     );
   }
 }
+export default withRouter(Login);

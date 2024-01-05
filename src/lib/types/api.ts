@@ -10,3 +10,4 @@ export interface Response {
   total_pages: number;
   total_results: number;
 }
+

@@ -26,7 +26,7 @@ export default class Navbar extends Component {
             <li className="hover:cursor-pointer hover:text-buttonColor duration-300">Tv Shows</li>
             <Link to={"/list-favorite"}>
               <li className="hover:cursor-pointer hover:text-buttonColor duration-300">
-                List Favorites
+                Favorites
               </li>
             </Link>
           </ul>

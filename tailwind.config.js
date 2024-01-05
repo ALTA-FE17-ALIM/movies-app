@@ -21,6 +21,7 @@ module.exports = {
         ubuntu: 'Ubuntu, sans-serif'
       },
       colors: {
+        bodyTextColor: "#757F95",
         bgBodyColor: "#06090F",
         buttonColor: "#29B6F6",
         buttonColor2: "#FF5858",

@@ -45,7 +45,7 @@ export default class NewRelease extends Component {
           navigation={true}
           modules={[Pagination, Navigation, Autoplay]}>
           {this.state.data.slice(0, 10).map((data) => (
-            <SwiperSlide>
+            <SwiperSlide key={data.id}>
               <Carousel
                 key={data.id}
                 id={data.id}
