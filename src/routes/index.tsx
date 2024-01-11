@@ -1,35 +1,27 @@
-import DetailMovie from "@/components/DetailMovie";
-import ListFavorite from "@/components/ListFavorite";
+import DetailMovie from "@/pages/movies/DetailMovie";
+import ListFavorite from "@/pages/movies/ListFavorite";
 import Index from "@/pages";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
-import { Component } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default class router extends Component {
-  render() {
-    const router = createBrowserRouter([
-      {
-        path: "/",
-        element: <Index />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/detail/:id",
-        element: <DetailMovie />,
-      },
-      {
-        path: "/list-favorite",
-        element: <ListFavorite />,
-      },
-    ]);
-    return <RouterProvider router={router} />;
-  }
-}
+const router = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Index />} path="/" />
+        <Route element={<Login />} path="/login" />
+        <Route element={<Register />} path="/register" />
+        <Route element={<DetailMovie />} path="/detail/:id" />
+        <Route element={<ListFavorite />} path="/list-favorite" />
+
+        <Route
+          element={<p className="text-white font-semibold text-2xl text-center">page not found </p>}
+          path="*"
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default router;
